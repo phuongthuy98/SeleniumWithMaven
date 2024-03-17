@@ -102,7 +102,7 @@ public class TestBase {
 		String originalWindow = driver.getWindowHandle();
 		clickToElement(locator,timeBySecond);
 		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeBySecond));
-
+		//TODO: code fail
 		for (String windowHandle : driver.getWindowHandles()) {
 			System.out.println("windowHandle1: " + windowHandle);
 			if(!windowHandle.equalsIgnoreCase(originalWindow)) {
