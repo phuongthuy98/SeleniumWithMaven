@@ -32,44 +32,44 @@ public class PracticeFormTest extends TestCase{
         PracticeFormPage practiveFormPage= formPage.clickPracticeForm();
         practiveFormPage.inputData((listData.get(0)));
 
-        String actualStudentName = practiveFormPage.getTextResult(practiveFormPage.txtStudentName);
+        String actualStudentName = testBase.getTextByLocator(practiveFormPage.txtStudentName);
         String expectedStudentName = listData.get(0).get("First name").toString() + " " + listData.get(0).get("Last name").toString();
         assertEquals(actualStudentName, expectedStudentName);
 
 
-        String actualEmail = practiveFormPage.getTextResult(practiveFormPage.txtEmail);
+        String actualEmail = testBase.getTextByLocator(practiveFormPage.txtEmail);
         String expectedEmail = listData.get(0).get("Email").toString();
         assertEquals(actualEmail, expectedEmail);
 
-        String actualGender = practiveFormPage.getTextResult(practiveFormPage.txtGender);
+        String actualGender = testBase.getTextByLocator(practiveFormPage.txtGender);
         String expectedGender = listData.get(0).get("Gender").toString();
         assertEquals(actualGender, expectedGender);
 
-        String actualMobile = practiveFormPage.getTextResult(practiveFormPage.txtMobile);
+        String actualMobile = testBase.getTextByLocator(practiveFormPage.txtMobile);
         String expectedMobile = listData.get(0).get("Mobile").toString();
         assertEquals(actualMobile, expectedMobile);
 
-        String actualDOB = practiveFormPage.getTextResult(practiveFormPage.txtDOB).replace(",", " ");
+        String actualDOB = testBase.getTextByLocator(practiveFormPage.txtDOB).replace(",", " ");
         String expectedDOB = listData.get(0).get("Date of Birth(DD MMM YYYY)").toString();
         assertEquals(actualDOB, expectedDOB);
 
-        String actualSubjects = practiveFormPage.getTextResult(practiveFormPage.txtSubjects);
+        String actualSubjects = testBase.getTextByLocator(practiveFormPage.txtSubjects);
         String expectedSubjects = listData.get(0).get("Subjects").toString();
         assertEquals(actualSubjects, expectedSubjects);
 
-        String actualHobbies = practiveFormPage.getTextResult(practiveFormPage.txtHobbies);
+        String actualHobbies = testBase.getTextByLocator(practiveFormPage.txtHobbies);
         String expectedHobbies = listData.get(0).get("Hobbies").toString();
         assertEquals(actualHobbies, expectedHobbies);
 
-        String actualPicture = practiveFormPage.getTextResult(practiveFormPage.txtStudentName);
+        String actualPicture = testBase.getTextByLocator(practiveFormPage.txtStudentName);
         String expectedPicture = listData.get(0).get("Picture").toString();
         assertEquals(actualPicture, expectedPicture);
 
-        String actualCurrentAddress = practiveFormPage.getTextResult(practiveFormPage.txtCurrentAddress);
+        String actualCurrentAddress = testBase.getTextByLocator(practiveFormPage.txtCurrentAddress);
         String expectedCurrentAddress = listData.get(0).get("Current Address").toString();
         assertEquals(actualCurrentAddress, expectedCurrentAddress);
 
-        String actualStateAndCity = practiveFormPage.getTextResult(practiveFormPage.txtStateAndCity);
+        String actualStateAndCity = testBase.getTextByLocator(practiveFormPage.txtStateAndCity);
         String expectedStateAndCity = listData.get(0).get("State").toString() + " " +listData.get(0).get("City").toString() ;
         assertEquals(actualStateAndCity, expectedStateAndCity);
     }

@@ -143,10 +143,6 @@ public class PracticeFormPage extends Page{
 
     }*/
 
-    public String getTextResult(By locator) {
-        String result = driverWeb.findElement(locator).getText();
-        return result;
-    }
     public PracticeFormPage(WebDriver dr) {
         super(dr);
     }

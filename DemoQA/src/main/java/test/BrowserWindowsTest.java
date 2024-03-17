@@ -41,9 +41,9 @@ public class BrowserWindowsTest extends TestCase{
         AlertFrameWindowPage alertFrameWindowPage = homePage.clickAlertFrameWindow();
         BrowserWindowsPage browserWindowsPage = alertFrameWindowPage.clickBrowserWindowMenu();
         homePage.testBase.scrollToEndPage();
-        DemoAlertPage alertPage = browserWindowsPage.clickNewWindowMessage();
+        DemoWindowsAlertPage demoAlertPage = browserWindowsPage.clickNewWindowMessage();
 
-        String actualText = alertPage.testBase.getText(alertPage.lbBody, alertPage.timeout_Short);
+        String actualText = demoAlertPage.testBase.getText(demoAlertPage.lbBody, demoAlertPage.timeout_Short);
         assertEquals(actualText, "Knowledge increases by sharing but not by saving. Please share this website with your friends and in your organization.");
     }
 

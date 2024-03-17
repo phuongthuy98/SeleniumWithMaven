@@ -21,9 +21,10 @@ public class BrowserWindowsPage extends Page{
     }
 
 
-    public DemoAlertPage clickNewWindowMessage() {
+    public DemoWindowsAlertPage clickNewWindowMessage() {
+        System.out.println("Start click");
         testBase.switchNewWindowByClick(btnNewWindowMessage,timeout_Short);
-        return new DemoAlertPage(driverWeb);
+        return new DemoWindowsAlertPage(driverWeb);
     }
 
 }

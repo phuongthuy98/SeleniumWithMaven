@@ -3,10 +3,10 @@ package page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class DemoAlertPage extends Page{
+public class DemoWindowsAlertPage extends Page{
     public By lbBody = By.xpath("//body");
 
-    public DemoAlertPage(WebDriver dr) {
+    public DemoWindowsAlertPage(WebDriver dr) {
         super(dr);
     }
 }
