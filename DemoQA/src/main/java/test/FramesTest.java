@@ -14,7 +14,6 @@ public class FramesTest extends TestCase{
     @Test
     public void verifyDisplayFrames() {
 
-        // Click vào phần tử
         HomePage homePage = new HomePage(testBase.driver);
         homePage.testBase.scrollToEndPage();
         AlertFrameWindowPage alertFrameWindowPage = homePage.clickAlertFrameWindow();
@@ -28,5 +27,11 @@ public class FramesTest extends TestCase{
         assertEquals(actualFrameText, expectedFrameText);
 
         testBase.driver.switchTo().defaultContent();
+
+        testBase.driver.switchTo().frame("frame2");
+
+        String actualFrameText2 = testBase.getTextByLocator(txtIframe);
+        String expectedFrameText2 = "This is a sample page";
+        assertEquals(actualFrameText2, expectedFrameText2);
     }
 }

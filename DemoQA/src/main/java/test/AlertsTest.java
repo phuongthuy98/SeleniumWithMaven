@@ -29,6 +29,8 @@ public class AlertsTest extends TestCase{
     @Test
     public void verifyAlertButton() {
         goToAlertsPage();
+        /*AlertsPage alertsPage = new AlertsPage(testBase.driver);
+        alertsPage.goToAlertPages();*/
         testBase.clickByLocator(btnAlert);
 
         //Wait for the alert to be displayed and store it in a variable
@@ -45,6 +47,7 @@ public class AlertsTest extends TestCase{
     }
     @Test
     public void verifyTimerAlert() {
+        goToAlertsPage();
         testBase.clickByLocator(btnTimerAlert);
 
         //Wait for the alert to be displayed and store it in a variable
