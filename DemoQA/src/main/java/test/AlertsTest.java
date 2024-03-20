@@ -2,10 +2,14 @@ package test;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import page.AlertFrameWindowPage;
 import page.AlertsPage;
 import page.HomePage;
+
+import java.time.Duration;
 
 import static org.testng.Assert.assertEquals;
 
@@ -43,7 +47,7 @@ public class AlertsTest extends TestCase{
 
         //Press the OK button
         alert.accept();
-
+        testBase.closeBrowser();
     }
     @Test
     public void verifyTimerAlert() {
@@ -51,6 +55,9 @@ public class AlertsTest extends TestCase{
         testBase.clickByLocator(btnTimerAlert);
 
         //Wait for the alert to be displayed and store it in a variable
+        WebDriverWait wait = new WebDriverWait(testBase.driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.alertIsPresent());
+
         Alert alert = testBase.driver.switchTo().alert();
 
         //Store the alert text in a variable
@@ -60,6 +67,7 @@ public class AlertsTest extends TestCase{
 
         //Press the OK button
         alert.accept();
+        testBase.closeBrowser();
     }
     @Test
     public void verifyConfirmAlertCancel() {
@@ -79,6 +87,7 @@ public class AlertsTest extends TestCase{
         String expectedOkConfirmAlert = "You selected Cancel";
         String actualOkConfirmAlert = testBase.getTextByLocator(txtConfirm);
         assertEquals(actualOkConfirmAlert, expectedOkConfirmAlert);
+        testBase.closeBrowser();
     }
     @Test
     public void verifyConfirmAlertOk() {
@@ -98,6 +107,7 @@ public class AlertsTest extends TestCase{
         String expectedOkConfirmAlert = "You selected Ok";
         String actualOkConfirmAlert = testBase.getTextByLocator(txtConfirm);
         assertEquals(actualOkConfirmAlert, expectedOkConfirmAlert);
+        testBase.closeBrowser();
     }
     @Test
     public void verifyPromtAlert() {
@@ -119,5 +129,6 @@ public class AlertsTest extends TestCase{
         String expectedPromtAlert = "You entered " + inputPrompt;
         String actualPromtAlert = testBase.getTextByLocator(txtPrompt);
         assertEquals(actualPromtAlert, expectedPromtAlert);
+        testBase.closeBrowser();
     }
 }

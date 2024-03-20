@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class TestBase {
 	public WebDriver driver;
@@ -127,6 +128,10 @@ public class TestBase {
 		driver.close();
 	}
 
+	public void navigateBrowser(String url) {
+		driver.navigate().to(url);
+	}
+
 	//hàm lấy giá trị attribute
 	public String getValueOfAttribute(By locator,String attributeName) {
 		String result="";
@@ -137,6 +142,20 @@ public class TestBase {
 	public String getTextByLocator(By locator) {
 		String result = driver.findElement(locator).getText();
 		return result;
+	}
+
+	public String getContentText(By locator) {
+		String result = "";
+		List<WebElement> lsContent = driver.findElements(locator);
+		for (WebElement l : lsContent) {
+			if (lsContent.size() > 1) {
+				result.concat(result);
+				result = result + l.getText() + " ";
+			} else {
+				result = result + l.getText() + " ";
+			}
+		}
+		return result.trim();
 	}
 
 }
