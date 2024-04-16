@@ -6,7 +6,9 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class TestBase {
 	public WebDriver driver;
@@ -24,6 +26,12 @@ public class TestBase {
 	public void scrollToEndPage() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+	}
+	/**
+	 *  @param locator
+	 * */
+	public void clickByLocator(By locator){
+		driver.findElement(locator).click();
 	}
 
 	/**
@@ -69,6 +77,9 @@ public class TestBase {
 	public void keysEnter(By locator) {
 		driver.findElement(locator).sendKeys(Keys.ENTER);
 	}
+	public void submitByLocator(By locator) {
+		driver.findElement(locator).submit();
+	}
 
 	public void zoomOut() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -87,15 +98,22 @@ public class TestBase {
 		return result;
 	}
 
+
 	public void switchNewWindowByClick(By locator, int timeBySecond){
 		String originalWindow = driver.getWindowHandle();
-
 		clickToElement(locator,timeBySecond);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeBySecond));
-
+		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeBySecond));
+		//TODO: code fail
 		for (String windowHandle : driver.getWindowHandles()) {
-			if(!originalWindow.contentEquals(windowHandle)) {
+			System.out.println("windowHandle1: " + windowHandle);
+			if(!windowHandle.equalsIgnoreCase(originalWindow)) {
+				System.out.println("driver1: " + driver);
+				//driver.switchTo().window(windowHandle);
 				driver.switchTo().window(windowHandle);
+				System.out.println("windowHandle2222: " + windowHandle);
+
+				System.out.println("driver2: " + driver);
+
 				break;
 			}
 		}
@@ -110,11 +128,34 @@ public class TestBase {
 		driver.close();
 	}
 
+	public void navigateBrowser(String url) {
+		driver.navigate().to(url);
+	}
+
 	//hàm lấy giá trị attribute
 	public String getValueOfAttribute(By locator,String attributeName) {
 		String result="";
 		result= driver.findElement(locator).getAttribute(attributeName);
 		return result;
+	}
+
+	public String getTextByLocator(By locator) {
+		String result = driver.findElement(locator).getText();
+		return result;
+	}
+
+	public String getContentText(By locator) {
+		String result = "";
+		List<WebElement> lsContent = driver.findElements(locator);
+		for (WebElement l : lsContent) {
+			if (lsContent.size() > 1) {
+				result.concat(result);
+				result = result + l.getText() + " ";
+			} else {
+				result = result + l.getText() + " ";
+			}
+		}
+		return result.trim();
 	}
 
 }
