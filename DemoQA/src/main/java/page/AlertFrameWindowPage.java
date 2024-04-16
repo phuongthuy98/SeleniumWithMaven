@@ -14,6 +14,11 @@ public class AlertFrameWindowPage extends Page{
         return new BrowserWindowsPage(driverWeb);
     }
 
+    /*public Page clickAlertsMenu() {
+        driverWeb.findElement(lblAlerts).click();
+        return new Page(driverWeb);
+    }*/
+
     public AlertsPage clickAlertsMenu() {
         driverWeb.findElement(lblAlerts).click();
         return new AlertsPage(driverWeb);
